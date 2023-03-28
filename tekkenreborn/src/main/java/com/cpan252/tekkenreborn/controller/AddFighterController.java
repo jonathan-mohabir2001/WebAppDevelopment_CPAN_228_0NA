@@ -56,10 +56,10 @@ public class AddFighterController {
   public String processFighterAddition(@Valid Fighter fighter,
       @ModelAttribute FighterPool pool, Errors errors) {
     if (errors.hasErrors()) {
-      return "design";
+      return "addFighter";
     }
     pool.add(fighter);
-    return "redirect:/design";
+    return "redirect:/add";
   }
 
 }
