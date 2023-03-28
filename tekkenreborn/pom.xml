@@ -20,6 +20,7 @@
   <!--Start of dependencies-->
 	<dependencies>
 
+  <!--THYMELEF DELIVERY-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -39,6 +40,7 @@
 			<optional>true</optional>
 		</dependency>
 
+  <!-- LOMBOK DELIVERY-->
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -46,6 +48,7 @@
 			<optional>true</optional>
 		</dependency>
     
+    <!--JAKARTA FOR VALIDATIONS DELIVERY-->
 
     <dependency>  
     <groupId>jakarta.platform</groupId>
@@ -54,11 +57,24 @@
     <scope>provided</scope>
     </dependency>
 
-
+    <!--JPA DELIVERY-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+
+    <!--H2 DATABASE DELIVERY-->
+  	<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+	
+  	<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
 		</dependency>
 
 
