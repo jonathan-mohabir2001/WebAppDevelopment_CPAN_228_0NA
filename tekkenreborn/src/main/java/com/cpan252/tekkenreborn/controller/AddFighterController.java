@@ -1,31 +1,31 @@
 package com.cpan252.tekkenreborn.controller;
 
 import java.util.EnumSet;
+import java.util.List;
 
-// Spring annotations required for the controller to be able to post from the form
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
-// Model attributes imported from the model package 
 import com.cpan252.tekkenreborn.model.Fighter;
-import com.cpan252.tekkenreborn.model.FighterPool;
 import com.cpan252.tekkenreborn.model.Fighter.Anime;
+import com.cpan252.tekkenreborn.repository.FighterRepository;
 
-// Lombok annotations
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @Slf4j
-@RequestMapping("/add") // the route for the controller post will be /add
-@SessionAttributes("fighterPool")
+@RequestMapping("/add")
 public class AddFighterController {
+
+  @Autowired
+  private FighterRepository fighterRepository;
 
   @GetMapping
   public String add() {
@@ -39,27 +39,26 @@ public class AddFighterController {
     log.info("animes converted to string:  {}", animes);
   }
 
-  @ModelAttribute(name = "fighterPool")
-  public FighterPool fighterPool() {
-    return new FighterPool();
+  @ModelAttribute(name = "fighters")
+  public List<Fighter> fighters() {
+    return fighterRepository.findAll();
   }
 
   @ModelAttribute
-  // This model attribute has a lifetime of a request
   public Fighter fighter() {
-    return Fighter
-        .builder()
-        .build();
+    return Fighter.builder().build();
   }
 
   @PostMapping
-  public String processFighterAddition(@Valid Fighter fighter,
-      @ModelAttribute FighterPool pool, Errors errors) {
+  public String processFighterAddition(@Valid Fighter fighter, Errors errors) {
+
+    log.info("Processing fighter addition");
+
     if (errors.hasErrors()) {
       return "addFighter";
     }
-    pool.add(fighter);
+    fighterRepository.save(fighter);
+    log.info("Fighter added to the pool: {}", fighter);
     return "redirect:/add";
   }
-
 }
