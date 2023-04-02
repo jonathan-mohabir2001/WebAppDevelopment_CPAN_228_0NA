@@ -32,6 +32,14 @@ public class AddFighterController {
     return "addFighter";
   }
 
+  // NEW route to show the fighters in the database 
+  @GetMapping("/fighters")
+  public String showFighters(Model model) {
+    List<Fighter> fighters = fighterRepository.findAll();
+    model.addAttribute("fighters", fighters);
+    return "fightersList";
+  }
+
   @ModelAttribute
   public void animes(Model model) {
     var animes = EnumSet.allOf(Anime.class);
@@ -39,16 +47,15 @@ public class AddFighterController {
     log.info("animes converted to string:  {}", animes);
   }
 
-  @ModelAttribute(name = "fighters")
-  public List<Fighter> fighters() {
-    return fighterRepository.findAll();
-  }
-
   @ModelAttribute
   public Fighter fighter() {
     return Fighter.builder().build();
   }
+// build the fighter object 
 
+
+
+  // NEW CHANGES - The postmapping method is now using the FighterRepo inorder to save it to the h2 database 
   @PostMapping
   public String processFighterAddition(@Valid Fighter fighter, Errors errors) {
 
@@ -59,6 +66,6 @@ public class AddFighterController {
     }
     fighterRepository.save(fighter);
     log.info("Fighter added to the pool: {}", fighter);
-    return "redirect:/add";
+    return "redirect:/add/fighters";
   }
 }

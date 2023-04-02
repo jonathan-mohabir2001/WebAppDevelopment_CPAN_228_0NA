@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>View Fighters</title>
+    <title>Fighters List</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -13,29 +13,25 @@
     />
   </head>
   <body>
-    <div class="container mt-5">
-      <h1 class="mb-4">View Fighters</h1>
-      <table class="table">
+    <div class="container mt-4">
+      <h1 class="text-center">Fighters List</h1>
+      <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Health</th>
-            <th scope="col">Damage per Hit</th>
-            <th scope="col">Resistance</th>
-            <th scope="col">Anime From</th>
-            <th scope="col">Created At</th>
+            <th>Name</th>
+            <th>Damage Per Hit</th>
+            <th>Health</th>
+            <th>Resistance</th>
+            <th>Anime From</th>
           </tr>
         </thead>
         <tbody>
           <tr th:each="fighter : ${fighters}">
-            <td th:text="${fighter.id}"></td>
             <td th:text="${fighter.name}"></td>
-            <td th:text="${fighter.damage_per_hit}"></td>
+            <td th:text="${fighter.damagePerHit}"></td>
             <td th:text="${fighter.health}"></td>
             <td th:text="${fighter.resistance}"></td>
-            <td th:text="${fighter.anime_from}"></td>
-            <td th:text="${fighter.created_at}"></td>
+            <td th:text="${fighter.animeFrom}"></td>
           </tr>
         </tbody>
       </table>
