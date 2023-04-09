@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,16 +11,57 @@
       crossorigin="anonymous"
     />
 
-    <title>HOME-PAGE</title>
+    <title>Home Page</title>
   </head>
 
   <body>
-    <header>
-      <h2>Welcome to the Home page</h2>
+    <header class="bg-dark text-light py-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        <h2 class="mb-0">Welcome to the Home Page</h2>
+        <nav>
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/add">Add Fighter</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/fighters">Fighter List</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
-    <main>
-      <h1>Hello</h1>
+    <main class="container py-5">
+      <h1 class="text-center">Hello</h1>
+
+      <p>
+        This is the codebase for the TekkenApplication developed over these past
+        few weeks. This application is a simple CRUD application that allows
+        users to add, edit, and delete fighters from the Tekken series. The
+        application is built using Java Spring Boot and uses an H2 database to
+        store the data.
+      </p>
+
+      <div class="text-center">
+        <a href="/register" class="btn btn-primary">Register Now</a>
+      </div>
     </main>
+
+    <footer class="bg-light py-3">
+      <div class="container text-center">
+        <p class="mb-0">
+          &copy; 2023 - Jonathan Mohabir - Web Application Development
+        </p>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+      integrity="sha384-bXgJJoCf57WNruOZ/vW+DWhrLrqlQFJvkl8+/2Q9b9JQUh7aZbKMyZ0qWJjjk0sL"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
